@@ -89,8 +89,8 @@ function enviarEmail($nome, $email) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'iguhasnv@gmail.com';
-        $mail->Password = 'senderh8937';
+        $mail->Username = 'email@gmail.com';
+        $mail->Password = 'senha';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         
