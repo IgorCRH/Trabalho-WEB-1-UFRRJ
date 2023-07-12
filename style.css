@@ -8,6 +8,10 @@ header{
     display: flex;
 }
 
+#conteudo{
+    position: absolute;
+}
+
 #titulo{
     background-color: #006666;
     display: inline-block;
@@ -41,28 +45,30 @@ header{
     border: 5px solid #F5F5F5;
 }
 
-.caixaVerdeAvaliacao {
-    background-color: #008584;
-    border: 5px solid #F5F5F5;
-    padding: 20px 15px;
-    margin-top: 20px;
-	right: -800px;
-	bottom: 500px;
-    border-radius: 45px;
-    color: #F5F5F5;
-    width: 400px;
-    position: relative;
+#avaliacao{
+	right: -700px;
+	top: 100px;
 }
 
-.caixaVerdeLogout {
-    background-color: #008584;
-    border: 5px solid #F5F5F5;
-    padding: 20px 15px;
-    margin-top: 20px;
-	right: -800px;
-	bottom: 500px;
+#logout{
+	right: -700px;
+	bottom: 100px;
+}
+
+.btao{
     border-radius: 45px;
     color: #F5F5F5;
     width: 400px;
-    position: relative;
+    position: absolute;
+    background-color: #008584;
+    border: 5px solid #F5F5F5;
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 35px;
+}
+
+.btao:hover{
+    color: #008584;
+    border-color: #008584;
+    background-color: #F5F5F5;
 }
