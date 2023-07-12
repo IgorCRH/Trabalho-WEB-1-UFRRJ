@@ -9,7 +9,7 @@ if(isset($_POST['login']) || isset($_POST['senha'])){
     else if(empty($_POST['senha'] == 0)){
         echo "Preencha sua senha";
     }
-        // Caso algum dos dois estejam vazios, será emitida uma mensagem solicitando o preenchimento
+        // Caso algum dos dois esteja vazio, será emitida uma mensagem solicitando o preenchimento
     else {
 
         $login = $conn->real_escape_string($_POST['login']); 
