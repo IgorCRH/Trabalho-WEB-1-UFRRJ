@@ -48,3 +48,9 @@ INSERT INTO `Respondente` (`Nome`, `CPF`, `DataNascimento`, `Peso`, `Altura`, `H
 ('Naruto Uzumaki', '624.047.300-61', '2005-05-03', 111, 1.64, 12, '0CNB76TK', 'narutouzumaki35@rocketmail.com'),
 ('Vegeta IV.', '747.966.160-63', '1980-07-02', 78, 1.65, 6, '18ELP7PT', 'vegetawarrior30@gmail.com'),
 ('Kakarotto Son Goku', '938.995.160-79', '1984-09-01', 132, 1, 7, '7EXQ8KRW', 'kakasgoku@gmail.com');
+
+ALTER TABLE Respondente
+ADD PrimeiroLogin TINYINT(1) NOT NULL DEFAULT 1 AFTER Email;
+
+UPDATE Respondente
+SET PrimeiroLogin = 1;
