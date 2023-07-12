@@ -1,72 +1,44 @@
 <?php
-include('conecta.php');
+session_start();
+include 'conecta.php';
 
-if(isset($_POST['login']) || isset($_POST['senha'])){ 
-        // Verifica se o login e a senha existem
-    if(empty($_POST['login'])){
-        echo "Preencha seu login";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $cpf = $_POST['CPF'];
+  $senha = $_POST['SenhaDisc'];
+
+  // Verifica se o CPF existe no banco de dados
+  $sql = "SELECT * FROM Respondente WHERE CPF = '$cpf'";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+
+    if ($row['PrimeiroLogin'] == 1) {
+      // Primeiro login, redireciona para a página de alteração de senha
+      $_SESSION['cpf'] = $cpf;
+      header("Location: alterasenha.php");
+      exit;
+    } else {
+      if ($row['Senha'] === $senha) {
+        // Usuário autenticado com sucesso
+        $_SESSION['cpf'] = $cpf;
+        header("Location: telainicial.php");
+        exit;
+      } else {
+        // Senha incorreta
+        echo "Senha incorreta.";
+      }
     }
-    else if(empty($_POST['senha'] == 0)){
-        echo "Preencha sua senha";
-    }
-        // Caso algum dos dois esteja vazio, será emitida uma mensagem solicitando o preenchimento
-    else {
-
-        $login = $conn->real_escape_string($_POST['login']); 
-        $senha = $conn->real_escape_string($_POST['senha']);
-        // Escapa os dados para evitar SQL injection e os coloca nas variáveis
-
-        $sql_codeC = "SELECT * FROM respondente WHERE CPF = '$login' AND Senha = '$senha'"; 
-        $sql_queryC = $conn->query($sql_codeC) or die("Falha no comando SQL: ". $conn->error);
-        $quantidadeC = $sql_queryC->num_rows;
-        // Responsável por checar o CPF
-
-        $sql_codeE = "SELECT * FROM respondente WHERE Email = '$login' AND Senha = '$senha'"; 
-        $sql_queryE = $conn->query($sql_codeE) or die("Falha no comando SQL: ". $conn->error);
-        $quantidadeE = $sql_queryE->num_rows;
-        // Responsável por checar o Email
-
-        if($quantidadeC == 1){ 
-            // Se o login foi feito por CPF, irá seguir por aqui
-            $usuario = $sql_queryC->fetch_assoc();
-
-            if(!isset($_SESSION)){
-                session_start();
-            }
-            
-            $_SESSION['CPF'] = $usuario['CPF'];
-
-            //header("Location: index.php"); // index.php é uma página genérica para fins de teste
-            
-        }
-        else if($quantidadeE == 1){
-            // Se o login foi feito por Email, irá seguir por aqui
-
-            $usuario = $sql_queryE->fetch_assoc();
-
-            if(!isset($_SESSION)){
-                session_start();
-            }
-
-            $_SESSION['Email'] = $usuario['Email'];
-
-            //header("Location: index.php"); // index.php é uma página genérica para fins de teste
-            
-        }
-        else{
-            echo "Falha no login! Email ou senha incorreto(s)";
-        }
-    }
+  } else {
+    // Usuário não encontrado
+    echo "Usuário não encontrado no sistema.";
+  }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
     <style>
-    button {
+      button {
         font-size: 20px;
         color: white;
         background-color: blue;
@@ -83,7 +55,7 @@ if(isset($_POST['login']) || isset($_POST['senha'])){
       button {
         display: block;
         margin: 0 auto;
-		font-size: 20px;
+        font-size: 20px;
         color: white;
         background-color: darkblue;
       }
@@ -94,31 +66,24 @@ if(isset($_POST['login']) || isset($_POST['senha'])){
         color: white;
         margin-bottom: 10px;
       }
-	  
+
       body {
         background-color: #4682B4;
       }
-	  
-	
-
     </style>
-    <title>Login</title>
-</head>
-<body>
-    <h1>Página de Login</h1>
-    <form action="" method="POST">
-        <p>
-            <label>Login</label>
-            <input type="text" name="login">
-        </p>
-        <p>
-            <label>Senha</label>
-            <input type="text" name="senha">
-        </p>
-
-        <p>
-            <button type="submit">Entrar</button>
-        </p>
+    <script src="validacpf.js"></script>
+    <h1>Login dos Discentes Respondentes</h1>
+  </head>
+  <body>
+    <form action="login.php" method="POST" onsubmit="return validarFormulario()">
+      <label for="cpf">CPF:</label>
+      <input type="text" name="CPF" required onblur="validarCPF(this.value)">
+      <br>
+      <label for="senha">Senha:</label>
+      <input type="password" name="SenhaDisc" required>
+      <br>
+      <input type="submit" value="Logar">
     </form>
-</body>
+  </body>
 </html>
+
