@@ -69,7 +69,7 @@ $docentes = $resultDocentes->fetch_all(MYSQLI_ASSOC);
       }
 
       input,
-      button {
+      button, select {
         display: block;
         margin: 0 auto;
         font-size: 20px;
@@ -82,6 +82,23 @@ $docentes = $resultDocentes->fetch_all(MYSQLI_ASSOC);
         text-align: center;
         color: white;
         margin-bottom: 10px;
+      }
+	  
+	  .btn {
+        padding: 10px 20px;
+        font-size: 20px;
+        color: white;
+        background-color: #323232;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+		position: relative;
+		top: 100px;
+		left: 200px;
+      }
+
+      .btn:hover {
+        background-color: #555555;
       }
 
     </style>
@@ -110,7 +127,8 @@ $docentes = $resultDocentes->fetch_all(MYSQLI_ASSOC);
       <label for="altura">Nota de Esclarecimento de Dúvidas:</label>
       <input type="text" name="NotadeEsclarecimentodeDuvidas" required>
       <br>
-      <input type="submit" value="Cadastrar">
+      <input type="submit" value="Registrar">
     </form>
+	<a href="telainicial.php" class="btn">Ir para Tela Inicial</a>
   </body>
 </html>

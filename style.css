@@ -2,10 +2,11 @@ body{
     background-color: #323232;
 }
 
-header{
+.caixa{
     width: 900px;
     margin: 0 auto;
     display: flex;
+    justify-content: center;
 }
 
 #conteudo{
@@ -93,4 +94,75 @@ header{
     color: #008584;
     border-color: #008584;
     background-color: #F5F5F5;
+}
+
+#btaoSenha{
+    margin: 15px auto;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.titulo2{
+    background-color: #006666;
+    display: inline;
+    margin: 20px auto;
+    font-size: 20px;
+    padding: 20px 15px;
+    border-radius: 45px;
+    border: 5px solid #008584;
+    color: #F5F5F5;
+    height: 25px;
+}
+
+.label1{
+    color: #F5F5F5;
+    font-size: 20px;
+    margin: auto 0;
+}
+
+.input{
+    margin-right: auto auto;
+    background-color: #006666;
+    display: block;
+    font-size: 20px;
+    border-radius: 45px;
+    border: 5px solid #008584;
+    color: #F5F5F5;
+}
+
+.btao2{
+    border-radius: 45px;
+    color: #F5F5F5;
+    width: 300px;
+    position: absolute;
+    background-color: #008584;
+    border: 5px solid #F5F5F5;
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.btao2:hover{
+    color: #008584;
+    border-color: #008584;
+    background-color: #F5F5F5;
+}
+
+.label2{
+    color: #F5F5F5;
+    font-size: 20px;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+.input2{
+    margin-right: auto auto;
+    background-color: #006666;
+    display: block;
+    font-size: 20px;
+    border-radius: 45px;
+    border: 5px solid #008584;
+    color: #F5F5F5;
+    margin: 0 auto;
 }

@@ -36,54 +36,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <html>
-  <head>
-    <style>
-      button {
-        font-size: 20px;
-        color: white;
-        background-color: blue;
-      }
 
-      h1 {
-        text-align: center;
-        line-height: 1;
-        height: 100px;
-        color: white;
-      }
-
-      input,
-      button {
-        display: block;
-        margin: 0 auto;
-        font-size: 20px;
-        color: white;
-        background-color: darkblue;
-      }
-
-      label {
-        display: block;
-        text-align: center;
-        color: white;
-        margin-bottom: 10px;
-      }
-
-      body {
-        background-color: #4682B4;
-      }
-    </style>
+<head>
+    <link rel="stylesheet" , href="reset.css?v=2">
+    <link rel="stylesheet" , href="style.css?v=2">
     <script src="validacpf.js"></script>
-    <h1>Login dos Discentes Respondentes</h1>
-  </head>
-  <body>
+</head>
+
+<body>
+    <div class="caixa">
+        <h1 class="titulo2">Login dos Discentes Respondentes</h1>
+    </div>
+
     <form action="login.php" method="POST" onsubmit="return validarFormulario()">
-      <label for="cpf">CPF:</label>
-      <input type="text" name="CPF" required onblur="validarCPF(this.value)">
-      <br>
-      <label for="senha">Senha:</label>
-      <input type="password" name="SenhaDisc" required>
-      <br>
-      <input type="submit" value="Logar">
+        <label class="label2" for="cpf">CPF:</label>
+        <input class="input2" type="text" name="CPF" required onblur="validarCPF(this.value)">
+        <br>
+        <label class="label2" for="senha">Senha:</label>
+        <input class="input2" type="password" name="SenhaDisc" required>
+        <br>
+        <div class="caixa">
+            <input class="btao2" type="submit" value="Logar">
+        </div>
     </form>
-  </body>
+</body>
+
 </html>
 

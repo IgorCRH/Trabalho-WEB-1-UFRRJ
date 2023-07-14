@@ -1,73 +1,46 @@
 <html>
-  <head>
-   <style>
-      button {
-        font-size: 20px;
-        color: white;
-        background-color: blue;
-      }
 
-      h1 {
-        text-align: center;
-        line-height: 1;
-        height: 100px;
-        color: white;
-      }
+<head>
 
-      input,
-      button {
-        display: block;
-        margin: 0 auto;
-		font-size: 20px;
-        color: white;
-        background-color: darkblue;
-      }
+    <link rel="stylesheet" , href="reset.css?v=2">
+    <link rel="stylesheet" , href="style.css?v=2">
+    <script src="validacpf.js"></script>
+</head>
 
-      label {
-        display: block;
-        text-align: center;
-        color: white;
-        margin-bottom: 10px;
-      }
-	  
-      body {
-        background-color: #4682B4;
-      }
-	  
-	
-
-    </style>
-	<script src="validacpf.js"></script>
-    <h1>Cadastro de Discentes Respondentes</h1>
-  </head>
-  <body>
+<body>
+    <div class="caixa">
+        <h1 class="titulo2">Cadastro de Discentes Respondentes</h1>
+    </div>
     <form action="cadastro.php" method="POST" onsubmit="return validarFormulario()">
-	     <label for="nome">Nome:</label>
-        <input type="text" name="NomeDisc" required>
+        <label class="label2" for="nome">Nome:</label>
+        <input class="input2" type="text" name="NomeDisc" required>
         <br>
-        <label for="cpf">CPF:</label>
-        <input type="text" name="CPF" required onblur="validarCPF(this.value)">
+        <label class="label2" for="cpf">CPF:</label>
+        <input class="input2" type="text" name="CPF" required onblur="validarCPF(this.value)">
         <br>
-        <label for="datanascimento">Data de Nascimento:</label>
-        <input type="text" name="DataNascDisc" required>
+        <label class="label2" for="datanascimento">Data de Nascimento:</label>
+        <input class="input2" type="text" name="DataNascDisc" required>
         <br>
-		<label for="peso">Peso:</label>
-        <input type="text" name="PesoDisc" required>
+        <label class="label2" for="peso">Peso:</label>
+        <input class="input2" type="text" name="PesoDisc" required>
         <br>
-		<label for="altura">Altura:</label>
-        <input type="text" name="AlturaDisc" required>
+        <label class="label2" for="altura">Altura:</label>
+        <input class="input2" type="text" name="AlturaDisc" required>
         <br>
-		<label for="horassono">Horas de Sono ao Dia:</label>
-        <input type="text" name="HorasSonoDisc" required>
+        <label class="label2" for="horassono">Horas de Sono ao Dia:</label>
+        <input class="input2" type="text" name="HorasSonoDisc" required>
         <br>
-		<label for="senha">Senha:</label>
-        <input type="text" name="SenhaDisc" required>
+        <label class="label2" for="senha">Senha:</label>
+        <input class="input2" type="text" name="SenhaDisc" required>
         <br>
-		<label for="senha">Email:</label>
-        <input type="text" name="EmailDisc" required>
+        <label class="label2" for="senha">Email:</label>
+        <input class="input2" type="text" name="EmailDisc" required>
         <br>
-        <input type="submit" value="Cadastrar">
+        <div class="caixa">
+            <input class="btao2" type="submit" value="Cadastrar">
+        </div>
     </form>
+</body>
 
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
@@ -134,6 +107,4 @@ if (isset($_POST['NomeDisc']) && isset($_POST['CPF']) && isset($_POST['PesoDisc'
 }
 ?>
 
-
-</body>
 </html>
