@@ -17,7 +17,7 @@ if ($resultDiscente->num_rows > 0) {
   $rowDiscente = $resultDiscente->fetch_assoc();
   $codigoDiscente = $rowDiscente['CodigoDiscente'];
 } else {
-  echo "Erro ao obter o código do discente.";
+  echo "<p style='color: white; font-size: 20px;'>Erro ao obter o código do discente.</p>";
   exit;
 }
 
@@ -31,8 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $resultVerificarAvaliacao = $conn->query($sqlVerificarAvaliacao);
 
   if ($resultVerificarAvaliacao->num_rows > 0) {
-    echo "Você já avaliou esse docente.";
-	header("Location: telainicial.php");
+	echo "<script>
+    window.alert('Você já avaliou esse docente!');
+    window.location = 'telainicial.php';
+  </script>";
+	header("refresh:2; url=telainicial.php");
     exit;
   }
 
@@ -47,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                           VALUES ('$codigoDiscente', '$codigoDocente', '$notaOrganizacao', '$notaPlanoCurso', '$notaDidatica', '$notaEsclarecimento')";
 
   if ($conn->query($sqlInserirAvaliacao) === TRUE) {
-    echo "Avaliação cadastrada com sucesso.";
+	echo "<p style='color: white; font-size: 20px;'>Avaliação cadastrada com sucesso.</p>";
   } else {
-    echo "Erro ao cadastrar a avaliação: " . $conn->error;
+    echo "<p style='color: red; font-size: 20px;'>Erro ao cadastrar avaliação: <span style='color: white; font-size: 20px;'>{$conn->error}</span></p>";
   }
 }
 
