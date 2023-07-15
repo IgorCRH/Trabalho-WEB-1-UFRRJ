@@ -5,6 +5,7 @@
     <link rel="stylesheet" , href="reset.css?v=2">
     <link rel="stylesheet" , href="style.css?v=2">
     <script src="validacpf.js"></script>
+	<script src="validadados.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
         <input class="input2" type="text" name="SenhaDisc" required>
         <br>
         <label class="label2" for="senha">Email:</label>
-        <input class="input2" type="text" name="EmailDisc" required>
+        <input class="input2" type="text" name="EmailDisc" id="emailInput" required oninput="validarEmail()">
         <br>
         <div class="caixa">
             <input class="btao2" type="submit" value="Cadastrar">
@@ -43,48 +44,46 @@
 </body>
 
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/Exception.php';
-require 'PHPMailer/SMTP.php';
-require 'PHPMailer/PHPMailerAutoload.php'; // Substitua pelo caminho correto para o arquivo autoload.php
 
 include 'conecta.php';
 
-// Função para enviar o email usando o PHPMailer
-function enviarEmail($nome, $email) {
-    $mail = new PHPMailer(true);
-    
-    try {
-        // Configurações do servidor de email
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'email@gmail.com';
-        $mail->Password = 'senha';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
-        
-        // Configurações do email
-        $mail->setFrom('iguhasnv@gmail.com', 'Sistema de Docentes');
-        $mail->addAddress($email, $nome);
-        $mail->Subject = 'Cadastro realizado com sucesso';
-        $mail->Body = "Olá $nome,\n\nSeu cadastro foi realizado com sucesso.";
-        
-        // Envio do email
-        $mail->send();
-        
-        echo "Discente cadastrado com sucesso e email enviado.";
-        header("Location: primeirologin.php");
-        exit;
-    } catch (Exception $e) {
-        echo "Erro ao enviar email: " . $mail->ErrorInfo;
+function enviarEmail($nome, $email){
+    require 'vendor/autoload.php';
+
+    // Configuração do transporte SMTP para o Gmail
+    $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
+    ->setUsername('iguhasnv@gmail.com')
+    ->setPassword('senderh8937');
+
+    // Criando o objeto Mailer usando o transporte SMTP configurado
+    $mailer = new Swift_Mailer($transport);
+
+    // Criando a mensagem de e-mail
+    $message = (new Swift_Message('Assunto do E-mail'))
+    ->setFrom(['iguhasnv@gmail.com' => 'Sender'])
+    ->setTo([$email_discente => $nome_discente])
+    ->setBody(
+      'Nome: ' . $nome_discente . "\n" .
+      'CPF: ' . $cpf_discente . "\n" .
+      'Data de Nascimento: ' . $data_nasc_discente . "\n" .
+      'Senha: ' . $senha_discente . "\n" .
+      'Email: ' . $email_discente . "\n" .
+      'Altura: ' . $altura_discente . "\n" .
+      'Peso: ' . $peso_discente . "\n" .
+      'Horas de Sono: ' . $horassonodia_discente . "\n"
+  );
+
+    // Enviando o e-mail
+    $result = $mailer->send($message);
+
+    // Verificando se o e-mail foi enviado com sucesso
+    if ($result) {
+    echo "E-mail enviado com sucesso!";
+    } else {
+    echo "Falha ao enviar o e-mail.";
     }
 }
 
-// Verifica se dentro do método POST os campos existem e têm algum valor
 if (isset($_POST['NomeDisc']) && isset($_POST['CPF']) && isset($_POST['PesoDisc']) && isset($_POST['AlturaDisc']) && isset($_POST['HorasSonoDisc']) && isset($_POST['DataNascDisc']) && isset($_POST['SenhaDisc']) && isset($_POST['EmailDisc'])) {
     $nome_discente = $_POST['NomeDisc'];
     $cpf_discente = $_POST['CPF'];
@@ -100,6 +99,7 @@ if (isset($_POST['NomeDisc']) && isset($_POST['CPF']) && isset($_POST['PesoDisc'
     if ($conn->query($sql_cadastro) === TRUE) {
         // Chama a função para enviar o email
         enviarEmail($nome_discente, $email_discente);
+		header("Location: login.php");
     } else {
         echo "Erro ao cadastrar discente: " . $conn->error;
     }
