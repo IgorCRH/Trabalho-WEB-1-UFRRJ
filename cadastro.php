@@ -59,7 +59,7 @@ function enviarEmail($nome, $email){
     $mailer = new Swift_Mailer($transport);
 
     // Criando a mensagem de e-mail
-    $message = (new Swift_Message('Assunto do E-mail'))
+    $message = (new Swift_Message('Seus Dados!'))
     ->setFrom(['sistemadeavaliacao0@gmail.com' => 'SistemadeAvaliacao'])
     ->setTo([$email_discente => $nome_discente])
     ->setBody(
