@@ -1,0 +1,12 @@
+Para enviar o email, temos que lidar com as verificações de segurança exigida pela Google.
+
+Caso seu email não tenha verificação em duas etapas:
+1º Acesse https://myaccount.google.com/lesssecureapps? 
+2º Habilite a opção "Acesso a apps menos seguros"
+
+Caso você tenha verificação em duas etapas:
+1º Acesse https://myaccount.google.com/
+2º Vá no menu "Segurança" 
+3º Clique em "Verificação em duas etapas"
+4º Desça até Senhas de App
+5º Use a senha gerada no programa
