@@ -36,8 +36,8 @@ if ($result->num_rows > 0) {
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="reset.css?v=1">
-    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="stylesheet" href="reset.css?v=5">
+    <link rel="stylesheet" href="style.css?v=5">
     <title>Página Aluno</title>
 </head>
 
@@ -71,6 +71,18 @@ if ($result->num_rows > 0) {
     <div id="avaliacao" class="btao" onclick="realizarAvaliacao()">
         <p>Realizar Avaliação</p>
     </div>
+	
+	<div id="inseremail" class="btao" onclick="realizarInsercaoEmails()">
+        <p>Adicionar E-Mails</p>
+    </div>
+	
+	<div id="altnomsenha" class="btao" onclick="realizarAlteracaoDados()">
+        <p>Alterar Nome e Senha</p>
+    </div>
+	
+	<div id="altemail" class="btao" onclick="realizarAlteracaoEmail()">
+        <p>Alterar E-Mail</p>
+    </div>
 
     <div id="logout" class="btao" onclick="realizarLogout()">
         <p>Realizar Logout</p>
@@ -83,6 +95,18 @@ if ($result->num_rows > 0) {
 
         function realizarAvaliacao() {
             window.location.href = "avaliacao.php";
+        }
+		
+		function realizarInsercaoEmails() {
+            window.location.href = "adicionaemails.php";
+        }
+		
+		function realizarAlteracaoEmail() {
+            window.location.href = "alteraemail.php";
+        }
+		
+		function realizarAlteracaoDados() {
+            window.location.href = "alteranomesenha.php";
         }
     </script>
 </div>

@@ -70,12 +70,27 @@ body{
 
 #avaliacao{
 	right: -700px;
-	top: 100px;
+	top: 50px;
+}
+
+#inseremail{
+	right: -700px;
+	bottom: 220px;
+}
+
+#altemail{
+	right: -700px;
+	bottom: 320px;
+}
+
+#altnomsenha{
+	right: -700px;
+	bottom: 120px;
 }
 
 #logout{
 	right: -700px;
-	bottom: 100px;
+	bottom: 25px;
 }
 
 .btao{
