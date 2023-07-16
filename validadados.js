@@ -96,7 +96,7 @@ function HorasSonoValidas()
     horasono = document.getElementById('HoraSonoInput').value;
     horasonoInput = document.getElementById('HoraSonoInput');
 
-    if(/^[\d.,;]+$/.test(altura))
+    if(/^[\d.,;]+$/.test(horasono))
     {
         horasonoInput.setCustomValidity("");
     }
@@ -121,4 +121,20 @@ function dataValida()
          valorDataInput.setCustomValidity("Data inválida! Use o formato AAAA-MM-DD.");
     }
      valorDataInput.reportValidity();
+}
+
+function notaAvaliacaoValida()
+{
+    nota = document.getElementById('notaInput').value;
+    notaInput = document.getElementById('notaInput');
+
+    if(/^[\d.,;]+$/.test(nota))
+    {
+        notaInput.setCustomValidity("");
+    }
+    else
+    {
+        notaInput.setCustomValidity("Valor inválido!");
+    }
+    notaInput.reportValidity();
 }

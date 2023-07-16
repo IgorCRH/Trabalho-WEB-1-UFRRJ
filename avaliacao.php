@@ -119,18 +119,18 @@ $docentes = $resultDocentes->fetch_all(MYSQLI_ASSOC);
       </select>
       <br>
       <label for="cpf">Nota de Organização das Aulas:</label>
-      <input type="text" name="NotadeOrganizacaodasAulas" required>
+      <input type="text" name="NotadeOrganizacaodasAulas" id="notaInput" required oninput="notaAvaliacaoValida(this)">
       <br>
       <label for="datanascimento">Nota do Plano de Curso:</label>
-      <input type="text" name="NotadoPlanodeCurso" required>
+      <input type="text" name="NotadoPlanodeCurso" id="notaInput" required oninput="notaAvaliacaoValida(this)">
       <br>
       <label for="peso">Nota de Didática:</label>
-      <input type="text" name="NotadeDidatica" required>
+      <input type="text" name="NotadeDidatica" id="notaInput" required oninput="notaAvaliacaoValida(this)">
       <br>
       <label for="altura">Nota de Esclarecimento de Dúvidas:</label>
-      <input type="text" name="NotadeEsclarecimentodeDuvidas" required>
+      <input type="text" name="NotadeEsclarecimentodeDuvidas" id="notaInput" required oninput="notaAvaliacaoValida(this)">
       <br>
-      <input type="submit" value="Registrar">
+      <input type="submit" value="Registrar Avaliação">
     </form>
 	<a href="telainicial.php" class="btn">Ir para Tela Inicial</a>
   </body>

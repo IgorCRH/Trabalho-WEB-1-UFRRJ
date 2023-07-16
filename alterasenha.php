@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form action="alterasenha.php" method="POST" onsubmit="return validarFormulario()">
         <div class="caixa">
             <label for="senha" class="label1">Nova Senha:</label>
-            <input class="input" type="password" name="NovaSenha" required>
+            <input class="input" type="password" name="NovaSenha" id="senhaInput" required oninput="senhaValida(this)">
         </div>
         <br>
         <div class="caixa">

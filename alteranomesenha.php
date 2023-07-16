@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="caixa">
         <h1 class="titulo">Alteração de Nome e Senha</h1>
     </div>
-    <form action="alteranomesenha.php" method="POST" onsubmit="return validarFormulario()">
+    <form action="alteranomesenha.php" method="POST">
         <label class="label2" for="nomenov">Nome Novo:</label>
         <input class="input2" type="text" name="NomeNovo">
         <br>

@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </select>
         <br>
         <label class="label2" for="emailnovo">Email Novo:</label>
-        <input class="input2" type="text" name="EmailNovo" required>
+        <input class="input2" type="text" name="EmailNovo" id="emailInput" required oninput="validarEmail(this)">
         <br>
         <div class="caixa">
             <input class="btao2" type="submit" value="Alterar">
