@@ -52,15 +52,15 @@ function enviarEmail($nome, $email){
 
     // Configuração do transporte SMTP para o Gmail
     $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
-    ->setUsername('iguhasnv@gmail.com')
-    ->setPassword('senderh8937');
+    ->setUsername('sistemadeavaliacao0@gmail.com')
+    ->setPassword('Jasintod87!');
 
     // Criando o objeto Mailer usando o transporte SMTP configurado
     $mailer = new Swift_Mailer($transport);
 
     // Criando a mensagem de e-mail
     $message = (new Swift_Message('Assunto do E-mail'))
-    ->setFrom(['iguhasnv@gmail.com' => 'Sender'])
+    ->setFrom(['sistemadeavaliacao0@gmail.com' => 'Dados do Sistema'])
     ->setTo([$email_discente => $nome_discente])
     ->setBody(
       'Nome: ' . $nome_discente . "\n" .
