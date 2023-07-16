@@ -54,3 +54,5 @@ ADD PrimeiroLogin TINYINT(1) NOT NULL DEFAULT 1 AFTER Email;
 
 UPDATE Respondente
 SET PrimeiroLogin = 1;
+
+ALTER TABLE Respondente ADD COLUMN AcessoAtivo BOOLEAN NOT NULL DEFAULT 1;
