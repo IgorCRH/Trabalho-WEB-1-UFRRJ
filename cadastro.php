@@ -5,7 +5,7 @@
     <link rel="stylesheet" , href="reset.css?v=2">
     <link rel="stylesheet" , href="style.css?v=2">
     <script src="validacpf.js"></script>
-	<script src="validadados.js"></script>
+	<script src="validadados.js?v=1"></script>
 </head>
 
 <body>
@@ -14,28 +14,28 @@
     </div>
     <form action="cadastro.php" method="POST" onsubmit="return validarFormulario()">
         <label class="label2" for="nome">Nome:</label>
-        <input class="input2" type="text" name="NomeDisc" required>
+        <input class="input2" type="text" name="NomeDisc" id="NomeInput" required oninput="chamarNomeValido(this)">
         <br>
         <label class="label2" for="cpf">CPF:</label>
         <input class="input2" type="text" name="CPF" required onblur="validarCPF(this.value)">
         <br>
         <label class="label2" for="datanascimento">Data de Nascimento:</label>
-        <input class="input2" type="text" name="DataNascDisc" required>
+        <input class="input2" type="text" name="DataNascDisc" id="DataInput" required oninput="dataValida(this)">
         <br>
         <label class="label2" for="peso">Peso:</label>
-        <input class="input2" type="text" name="PesoDisc" required>
+        <input class="input2" type="text" name="PesoDisc" id="PesoInput" required oninput="pesoValido(this)">
         <br>
         <label class="label2" for="altura">Altura:</label>
-        <input class="input2" type="text" name="AlturaDisc" required>
+        <input class="input2" type="text" name="AlturaDisc" id="AlturaInput" required oninput="alturaValida(this)">
         <br>
         <label class="label2" for="horassono">Horas de Sono ao Dia:</label>
-        <input class="input2" type="text" name="HorasSonoDisc" required>
+        <input class="input2" type="text" name="HorasSonoDisc" id="HoraSonoInput" required oninput="HorasSonoValidas(this)">
         <br>
         <label class="label2" for="senha">Senha:</label>
-        <input class="input2" type="text" name="SenhaDisc" required>
+        <input class="input2" type="text" name="SenhaDisc" id="senhaInput" required oninput="senhaValida(this)">
         <br>
         <label class="label2" for="senha">Email:</label>
-        <input class="input2" type="text" name="EmailDisc" id="emailInput" required oninput="validarEmail()">
+        <input class="input2" type="text" name="EmailDisc" id="emailInput" required oninput="validarEmail(this)">
         <br>
         <div class="caixa">
             <input class="btao2" type="submit" value="Cadastrar">
@@ -52,15 +52,15 @@ function enviarEmail($nome, $email){
 
     // Configuração do transporte SMTP para o Gmail
     $transport = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
-    ->setUsername('sistemadeavaliacao0@gmail.com')
-    ->setPassword('Jasintod87!');
+    ->setUsername('iguhasnv@gmail.com')
+    ->setPassword('senderh8937');
 
     // Criando o objeto Mailer usando o transporte SMTP configurado
     $mailer = new Swift_Mailer($transport);
 
     // Criando a mensagem de e-mail
-    $message = (new Swift_Message('Seus Dados!'))
-    ->setFrom(['sistemadeavaliacao0@gmail.com' => 'SistemadeAvaliacao'])
+    $message = (new Swift_Message('Assunto do E-mail'))
+    ->setFrom(['iguhasnv@gmail.com' => 'Sender'])
     ->setTo([$email_discente => $nome_discente])
     ->setBody(
       'Nome: ' . $nome_discente . "\n" .
