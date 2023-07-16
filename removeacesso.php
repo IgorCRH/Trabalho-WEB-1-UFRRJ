@@ -10,22 +10,33 @@ if (!isset($_SESSION['cpf'])) {
 
 $cpf = $_SESSION['cpf'];
 
-// Remover avaliações do usuário (codigodiscente igual a ele) da tabela "avaliacao"
-$sqlRemoverAvaliacoes = "DELETE FROM avaliacao WHERE codigodiscente = '$cpf'";
-if ($conn->query($sqlRemoverAvaliacoes) !== TRUE) {
-  echo "<p style='color: red; font-size: 20px;'>Erro ao remover as avaliações: {$conn->error}</p>";
-}
+// Consulta o código do discente usando o CPF
+$sql = "SELECT codigodiscente FROM Respondente WHERE CPF = '$cpf'";
+$result = $conn->query($sql);
 
-// Desativar o acesso do usuário (campo AcessoAtivo igual a 0) na tabela "Respondente"
-$sqlUpdateAcessoAtivo = "UPDATE Respondente SET AcessoAtivo = 0 WHERE CPF = '$cpf'";
-if ($conn->query($sqlUpdateAcessoAtivo) !== TRUE) {
-  echo "<p style='color: red; font-size: 20px;'>Erro ao desativar o acesso: {$conn->error}</p>";
+if ($result->num_rows > 0) {
+  $row = $result->fetch_assoc();
+  $codigodiscente = $row['codigodiscente'];
+
+  // Remover avaliações do usuário (codigodiscente igual ao dele) da tabela "Avaliacao"
+  $sqlRemoverAvaliacoes = "DELETE FROM Avaliacao WHERE codigodiscente = '$codigodiscente'";
+  if ($conn->query($sqlRemoverAvaliacoes) !== TRUE) {
+    echo "<p style='color: red; font-size: 20px;'>Erro ao remover as avaliações: {$conn->error}</p>";
+  }
+
+  // Desativar o acesso do usuário (campo AcessoAtivo igual a 0) na tabela "Respondente"
+  $sqlUpdateAcessoAtivo = "UPDATE Respondente SET AcessoAtivo = 0 WHERE codigodiscente = '$codigodiscente'";
+  if ($conn->query($sqlUpdateAcessoAtivo) !== TRUE) {
+    echo "<p style='color: red; font-size: 20px;'>Erro ao desativar o acesso: {$conn->error}</p>";
+  } else {
+    // Logout do usuário e redirecionamento para a página de login
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit;
+  }
 } else {
-  // Logout do usuário e redirecionamento para a página de login
-  session_unset();
-  session_destroy();
-  header("Location: login.php");
-  exit;
+  echo "<p style='color: white; font-size: 20px;'>Usuário não encontrado no sistema!</p>";
 }
 ?>
 <!DOCTYPE html>
