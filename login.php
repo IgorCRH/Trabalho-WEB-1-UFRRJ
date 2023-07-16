@@ -19,19 +19,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       header("Location: alterasenha.php");
       exit;
     } else {
-      if ($row['Senha'] === $senha) {
+      if ($row['Senha'] === $senha && $row['AcessoAtivo'] == 1) {
         // Usuário autenticado com sucesso
         $_SESSION['cpf'] = $cpf;
         header("Location: telainicial.php");
         exit;
       } else {
         // Senha incorreta
-        echo "Senha incorreta.";
+		  echo "<script>
+          window.alert('Senha incorreta ou acesso inativo.');
+          </script>";
       }
     }
   } else {
     // Usuário não encontrado
-    echo "Usuário não encontrado no sistema.";
+    echo "<p style='color: white; font-size: 20px;'>Usuário não encontrado no sistema!</p>";
   }
 }
 ?>

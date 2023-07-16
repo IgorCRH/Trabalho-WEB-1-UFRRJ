@@ -88,9 +88,14 @@ body{
 	bottom: 120px;
 }
 
-#logout{
+#sairsist{
 	right: -700px;
 	bottom: 25px;
+}
+
+#logout{
+	right: -700px;
+    bottom: -70px;
 }
 
 .btao{
