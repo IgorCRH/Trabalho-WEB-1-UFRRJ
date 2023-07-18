@@ -1,0 +1,25 @@
+Link do Vídeo de Apresentação - https://www.youtube.com/watch?v=Hx9swVE3XrY
+------------------------------------------------------------
+Instruções
+1 - Extraia o diretório com os PHP e o vendor da bibilioteca Swift para a pasta htdocs do XAMPP.
+2 - O envio de emails é feito com o uso da bibilioteca Swift. Necessário ligar os módulos Apache e MYSQL no XAMPP, além de possuir o PHP 7.2.0 ou versão superior.
+3 - Mudar os dados do arquivo conecta.php para o nome e senha do usuário da sua máquina, e o nome da database no PHPMyAdmin, no código SQL que enviamos, após a inserção deste na aba SQL da base de dados, está com o nome 'sistemaavaliacao'.
+4 - A escrita ?v=1, ?v=2 é referente as versões dos arquivos CSS e JS, necessárias para o seu devido carregamento em algumas páginas, especialmente o CSS, após atualizações e mudanças dos mesmos.
+5 - Pode ser necessário ter que entrar como Root no PHPMyAdmin.
+6 - Lidando com a segurança do Google para enviar os emails:
+Caso seu email não tenha verificação em duas etapas:
+1º Acesse https://myaccount.google.com/lesssecureapps? 
+2º Habilite a opção "Acesso a apps menos seguros"
+
+Caso você tenha verificação em duas etapas (Recomendado):
+1º Acesse https://myaccount.google.com/
+2º Vá no menu "Segurança" 
+3º Clique em "Verificação em duas etapas"
+4º Desça até Senhas de App e gera uma senha
+5º Use a senha gerada em ->setPassword na função enviarEmail do arquivo/página cadastro.php
+------------------------------------------------------------
+Observações
+1 - avaliacaodedocentessqldump é o dump da base de dados no PHPMyAdmin, como pedido.
+2 - sistemaavaliacaocodigosqloriginal é o código SQL puro e original de criação das tabelas e dos atributos TINYTINY AcessoAtivo e PrimeiroLogin.
+3 - logout.php não é uma página em si, mas sim um código php para deslogar o usuário da sessão.
+4 - reset.css e style.css são os arquivos de estilização das páginas PHP e sua parte HTML embutida.
